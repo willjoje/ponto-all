@@ -31,14 +31,15 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: "80%",
+    height: "30%",
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "flex-start",
   },
   image: {
-    width: "286px",
-    height: "287px",
+    marginTop: "88px",
+    width: "20rem",
+    height: "20rem",
   },
   buttonGroup: {
     height: "20%",
@@ -87,12 +88,14 @@ const styles = StyleSheet.create({
     lineHeight: "24px",
   },
   time: {
+    marginTop: "50px",
     fontStyle: "bold",
     fontWeight: "600",
     fontSize: "24px",
     lineHeight: "24px",
   },
   wellcome: {
+    marginTop: "88px",
     fontFamily: "Montserrat",
     fontStyle: "normal",
     fontWeight: 800,
