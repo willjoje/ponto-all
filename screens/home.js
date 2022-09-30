@@ -7,14 +7,19 @@ import img from "../assets/home-img.svg";
 import pin from "../assets/pin_drop.svg";
 
 export default function Home() {
-  const [loaded] = useFonts({
-    Montserrat: require("../assets/font/Montserrat-Regular.ttf"),
+  const [fontsLoaded] = useFonts({
+    'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf'),
   });
 
-  if (!loaded) {
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
     return null;
   }
-
   return (
     <>
       <View style={styles.container}>
