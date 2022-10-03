@@ -1,25 +1,12 @@
 import React from "react";
 import { Pressable, Image, Text, View } from "react-native";
 import { StyleSheet } from "react-native";
-import { useFonts } from "expo-font";
 import { globalStyles } from "../styles/global";
+import { useCallback } from "react";
 import img from "../assets/home-img.svg";
 import pin from "../assets/pin_drop.svg";
 
 export default function Home() {
-  const [fontsLoaded] = useFonts({
-    'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf'),
-  });
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded) {
-    return null;
-  }
   return (
     <>
       <View style={styles.container}>
@@ -58,7 +45,6 @@ const styles = StyleSheet.create({
   },
   wellcome: {
     marginTop: "88px",
-    fontFamily: "Montserrat",
     fontStyle: "normal",
     fontWeight: 800,
     fontSize: 24,

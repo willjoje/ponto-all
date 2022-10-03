@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native-web";
+import { StyleSheet } from "react-native";
 
 export const globalStyles = StyleSheet.create({
   buttonGroup: {
@@ -17,7 +17,6 @@ export const globalStyles = StyleSheet.create({
     height: "40%",
   },
   buttonText: {
-    fontFamily: "Montserrat",
     color: "white",
     fontStyle: "normal",
     fontWeight: "400",
@@ -25,7 +24,6 @@ export const globalStyles = StyleSheet.create({
     lineHeight: "24px",
   },
   pressableText: {
-    fontFamily: "Montserrat",
     fontStyle: "normal",
     fontWeight: "600",
     fontSize: "14px",
@@ -44,7 +42,6 @@ export const globalStyles = StyleSheet.create({
     height: 16,
   },
   street: {
-    fontFamily: "Montserrat",
     fontStyle: "normal",
     fontWeight: "600",
     fontSize: "14px",
@@ -52,7 +49,6 @@ export const globalStyles = StyleSheet.create({
   },
   time: {
     marginTop: "50px",
-    fontFamily: "Montserrat",
     fontStyle: "bold",
     fontWeight: "600",
     fontSize: "34px",
