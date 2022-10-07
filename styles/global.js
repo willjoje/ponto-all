@@ -18,6 +18,7 @@ export const globalStyles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
+    fontFamily: "Montserrat",
     fontWeight: "800",
     fontSize: 15,
     lineHeight: 24,
@@ -27,7 +28,14 @@ export const globalStyles = StyleSheet.create({
   },
   boldText: {
     color: "black",
+    fontFamily: "Montserrat",
     fontWeight: "900",
+    fontSize: 15,
+    lineHeight: 24,
+  },
+  normalText: {
+    fontFamily: "Montserrat",
+    fontWeight: "400",
     fontSize: 15,
     lineHeight: 24,
   },
@@ -43,7 +51,7 @@ export const globalStyles = StyleSheet.create({
     height: 16,
   },
   street: {
-    fontStyle: "normal",
+    fontFamily: "Montserrat",
     fontWeight: "600",
     fontSize: 14,
     lineHeight: 24,
@@ -51,6 +59,7 @@ export const globalStyles = StyleSheet.create({
   time: {
     marginTop: 50,
     fontStyle: "bold",
+    fontFamily: "Montserrat",
     fontWeight: "600",
     fontSize: 24,
     lineHeight: 24,

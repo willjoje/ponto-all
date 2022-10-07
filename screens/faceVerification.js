@@ -7,9 +7,11 @@ import { Pressable, Image, Text, View, Button } from "react-native";
 
 export default function faceVerification({ navigation }) {
   const pressHandler = () => {
+    navigation.navigate("Confirmation");
+  };
+  const pressHandlerBack = () => {
     navigation.navigate("Guide");
   };
-
   let cameraRef = useRef();
   const [type, setType] = useState(CameraType.front);
   const [hasCameraPermission, setHasCameraPermission] = useState();
@@ -55,10 +57,10 @@ export default function faceVerification({ navigation }) {
         ></Camera>
       </View>
       <View style={globalStyles.buttonGroup}>
-        <Pressable style={globalStyles.button}>
+        <Pressable style={globalStyles.button} onPress={pressHandler}>
           <Text style={globalStyles.buttonText}>Enviar foto</Text>
         </Pressable>
-        <Pressable style={globalStyles.pressable}>
+        <Pressable style={globalStyles.pressable} onPress={pressHandlerBack}>
           <Text style={globalStyles.boldText}>Cancelar</Text>
         </Pressable>
       </View>

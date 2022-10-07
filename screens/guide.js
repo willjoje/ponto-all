@@ -7,7 +7,10 @@ import pin from "../assets/pin_drop.png";
 
 export default function Guide({ navigation }) {
   const pressHandler = () => {
-    navigation.navigate("faceVerification");
+    navigation.navigate("FaceVerification");
+  };
+  const pressHandlerBack = () => {
+    navigation.navigate("Home");
   };
   return (
     <>
@@ -30,7 +33,7 @@ export default function Guide({ navigation }) {
             Começar o reconhecimento
           </Text>
         </Pressable>
-        <Pressable style={styles.pressable}>
+        <Pressable style={styles.pressable} onPress={pressHandlerBack}>
           <Text style={globalStyles.boldText}>Cancelar</Text>
         </Pressable>
       </View>
@@ -52,19 +55,20 @@ const styles = StyleSheet.create({
     height: 200,
   },
   wellcome: {
-    fontStyle: "normal",
-    fontWeight: "800",
+    fontFamily: "Montserrat",
     fontSize: 24,
     lineHeight: 24,
   },
   boldText: {
     marginTop: 60,
+    fontFamily: "Montserrat",
     fontWeight: "900",
     fontSize: 15,
   },
   pText: {
     marginHorizontal: 40,
     marginTop: 60,
+    fontFamily: "Montserrat",
     fontWeight: "700",
     fontSize: 15,
     lineHeight: 25,

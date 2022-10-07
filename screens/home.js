@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   wellcome: {
     marginTop: 40,
-    fontStyle: "bold",
+    fontFamily: "Montserrat",
     fontWeight: "800",
     fontSize: 24,
     lineHeight: 34,

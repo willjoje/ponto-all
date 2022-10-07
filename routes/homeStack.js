@@ -2,17 +2,21 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 import Home from "../screens/home";
 import Guide from "../screens/guide";
-import faceVerification from "../screens/faceVerification";
+import FaceVerification from "../screens/faceVerification";
+import Confirmation from "../screens/confirmation";
 
 const screens = {
-  faceVerification: {
-    screen: faceVerification,
+  Confirmation: {
+    screen: Confirmation,
   },
   Home: {
     screen: Home,
   },
   Guide: {
     screen: Guide,
+  },
+  FaceVerification: {
+    screen: FaceVerification,
   },
 };
 
