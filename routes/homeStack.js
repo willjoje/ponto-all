@@ -4,8 +4,12 @@ import Home from "../screens/home";
 import Guide from "../screens/guide";
 import FaceVerification from "../screens/faceVerification";
 import Confirmation from "../screens/confirmation";
+import Location from "../screens/location";
 
 const screens = {
+  Location: {
+    screen: Location,
+  },
   Confirmation: {
     screen: Confirmation,
   },
