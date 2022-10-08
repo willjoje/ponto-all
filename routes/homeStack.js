@@ -4,17 +4,13 @@ import Home from "../screens/home";
 import Guide from "../screens/guide";
 import FaceVerification from "../screens/faceVerification";
 import Confirmation from "../screens/confirmation";
-import Location from "../screens/location";
 
 const screens = {
-  Location: {
-    screen: Location,
+  Home: {
+    screen: Home,
   },
   Confirmation: {
     screen: Confirmation,
-  },
-  Home: {
-    screen: Home,
   },
   Guide: {
     screen: Guide,

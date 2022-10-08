@@ -52,16 +52,15 @@ export const globalStyles = StyleSheet.create({
   },
   street: {
     fontFamily: "Montserrat",
-    fontWeight: "600",
+    fontWeight: "800",
     fontSize: 14,
     lineHeight: 24,
   },
   time: {
     marginTop: 50,
-    fontStyle: "bold",
     fontFamily: "Montserrat",
-    fontWeight: "600",
-    fontSize: 24,
-    lineHeight: 24,
+    color: "#343A40",
+    fontSize: 32,
+    lineHeight: 32,
   },
 });

@@ -4,6 +4,7 @@ import { StyleSheet } from "react-native";
 import { globalStyles } from "../styles/global";
 import img from "../assets/landing-img.png";
 import pin from "../assets/pin_drop.png";
+import location from "../util/location";
 
 export default function Home({ navigation }) {
   const pressHandler = () => {
@@ -14,10 +15,12 @@ export default function Home({ navigation }) {
       <View style={styles.container}>
         <View style={globalStyles.localization}>
           <Image source={pin} style={globalStyles.pin}></Image>
-          <Text style={globalStyles.street}> Rua das Flores, 263</Text>
+          <Text style={globalStyles.street}> {location.call()}</Text>
         </View>
         <Text style={globalStyles.time}>09:41</Text>
-        <Text style={styles.wellcome}>Bem vindo, usuário!</Text>
+        <Text style={styles.wellcome}>
+          Bem vindo, <Text style={styles.user}>usuário</Text>!
+        </Text>
         <Image source={img} style={styles.image}></Image>
       </View>
       <View style={globalStyles.buttonGroup}>
@@ -48,10 +51,13 @@ const styles = StyleSheet.create({
     height: 300,
   },
   wellcome: {
-    marginTop: 40,
-    fontFamily: "Montserrat",
-    fontWeight: "800",
+    marginTop: 30,
+    fontFamily: "MontserratBold",
     fontSize: 24,
     lineHeight: 34,
+  },
+  user: {
+    color: "#F06595",
+    fontFamily: "MontserratBold",
   },
 });

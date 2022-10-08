@@ -4,6 +4,8 @@ import * as Font from "expo-font";
 
 let customFonts = {
   Montserrat: require("./assets/fonts/Montserrat.ttf"),
+  MontserratSemiBold: require("./assets/fonts/Montserrat-SemiBold.ttf"),
+  MontserratBold: require("./assets/fonts/Montserrat-Bold.ttf"),
 };
 
 export default class App extends React.Component {
