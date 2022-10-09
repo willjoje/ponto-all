@@ -2,8 +2,9 @@ import { useState, useRef, useEffect, React } from "react";
 import { StyleSheet } from "react-native";
 import { globalStyles } from "../styles/global";
 import { Camera, CameraType } from "expo-camera";
-import pin from "../assets/pin_drop.png";
 import { Pressable, Image, Text, View, Button } from "react-native";
+import location from "../util/location";
+import pin from "../assets/pin_drop.png";
 
 export default function faceVerification({ navigation }) {
   const pressHandler = () => {
@@ -45,7 +46,7 @@ export default function faceVerification({ navigation }) {
       <View style={styles.container}>
         <View style={globalStyles.localization}>
           <Image source={pin} style={globalStyles.pin}></Image>
-          <Text style={globalStyles.street}> Rua das Flores, 263</Text>
+          <Text style={globalStyles.street}> {location.call()}</Text>
         </View>
       </View>
       <View style={styles.cameraContainer}>
