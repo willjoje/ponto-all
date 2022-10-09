@@ -31,10 +31,8 @@ export default function Home({ navigation }) {
         <Image source={img} style={styles.image}></Image>
       </View>
       <View style={globalStyles.buttonGroup}>
-        <Pressable style={globalStyles.button}>
-          <Text style={globalStyles.buttonText} onPress={pressHandler}>
-            Registrar entrada
-          </Text>
+        <Pressable style={globalStyles.button} onPress={pressHandler}>
+          <Text style={globalStyles.buttonText}>Registrar entrada</Text>
         </Pressable>
         <Pressable style={globalStyles.pressable}>
           <Text style={globalStyles.boldText}>Ver histórico</Text>
