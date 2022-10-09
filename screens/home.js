@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Pressable, Image, Text, View } from "react-native";
 import { StyleSheet } from "react-native";
 import { globalStyles } from "../styles/global";
 import img from "../assets/landing-img.png";
 import pin from "../assets/pin_drop.png";
 import location from "../util/location";
+import moment from "moment";
+import "moment/locale/pt-br";
 
 export default function Home({ navigation }) {
   const pressHandler = () => {
     navigation.navigate("Guide");
   };
+  const [currentDate, setCurrentDate] = useState("");
+  useEffect(() => {
+    moment.locale("pt-br");
+    setInterval(() => setCurrentDate(moment().format("LT")), 200);
+  }, []);
   return (
     <>
       <View style={styles.container}>
@@ -17,7 +24,7 @@ export default function Home({ navigation }) {
           <Image source={pin} style={globalStyles.pin}></Image>
           <Text style={globalStyles.street}> {location.call()}</Text>
         </View>
-        <Text style={globalStyles.time}>09:41</Text>
+        <Text style={globalStyles.time}>{currentDate}</Text>
         <Text style={styles.wellcome}>
           Bem vindo, <Text style={styles.user}>usuário</Text>!
         </Text>
