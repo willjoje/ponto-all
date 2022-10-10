@@ -3,6 +3,7 @@ import { Pressable, Image, Text, View } from "react-native";
 import { StyleSheet } from "react-native";
 import { globalStyles } from "../styles/global";
 import img from "../assets/perfil.png";
+import pinkCircle from "../assets/pinkCircle.png";
 import pin from "../assets/pin_drop.png";
 
 export default function Guide({ navigation }) {
@@ -21,6 +22,7 @@ export default function Guide({ navigation }) {
           </Text>
         </View>
         <Image source={img} style={styles.image}></Image>
+        <Image source={pinkCircle} style={styles.pinkCircle}></Image>
         <Text style={styles.pText}>
           . Preencha o círculo com seu rosto {"\n"}. Assegure-se de que o
           ambiente está iluminado {"\n"}. Não utilize chapéus, óculos ou
@@ -53,6 +55,7 @@ const styles = StyleSheet.create({
     marginTop: 70,
     width: 200,
     height: 200,
+    zIndex: 2,
   },
   wellcome: {
     fontFamily: "Montserrat",
@@ -83,5 +86,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "space-around",
+  },
+  pinkCircle: {
+    top: 100,
+    position: "absolute",
   },
 });
