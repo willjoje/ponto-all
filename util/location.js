@@ -26,13 +26,5 @@ export default function App() {
     })();
   }, []);
 
-  // let text = "Waiting..";
-  // if (errorMsg) {
-  //   text = errorMsg;
-  // } else if (location) {
-  //   text = JSON.stringify(location);
-  // }
-  // organizar o tratamento de erros
-
   return <Text>{address}</Text>;
 }
