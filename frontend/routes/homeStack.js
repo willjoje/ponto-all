@@ -4,9 +4,14 @@ import Home from "../screens/home";
 import Guide from "../screens/guide";
 import FaceVerification from "../screens/faceVerification";
 import Confirmation from "../screens/confirmation";
+import Login from "../screens/login";
 import { WhiteBalance } from "expo-camera";
 
 const screens = {
+  Login: {
+    screen: Login,
+    navigationOptions: { headerTintColor: "#fff" },
+  },
   Home: {
     screen: Home,
     navigationOptions: { headerTintColor: "#fff" },

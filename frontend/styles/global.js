@@ -63,4 +63,12 @@ export const globalStyles = StyleSheet.create({
     fontSize: 32,
     lineHeight: 32,
   },
+  pinkText: {
+    color: "#F06595",
+    fontFamily: "MontserratBold",
+  },
+  contentPlace: {
+    marginHorizontal: 22,
+    fontFamily: "Montserrat",
+  },
 });

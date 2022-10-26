@@ -26,7 +26,7 @@ export default function Home({ navigation }) {
         </View>
         <Text style={globalStyles.time}>{currentDate}</Text>
         <Text style={styles.wellcome}>
-          Bem vindo, <Text style={styles.user}>usuário</Text>!
+          Bem vindo, <Text style={globalStyles.pinkText}>usuário</Text>!
         </Text>
         <Image source={img} style={styles.image}></Image>
       </View>
@@ -61,8 +61,5 @@ const styles = StyleSheet.create({
     fontSize: 24,
     lineHeight: 34,
   },
-  user: {
-    color: "#F06595",
-    fontFamily: "MontserratBold",
-  },
+  
 });
