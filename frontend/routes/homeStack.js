@@ -4,9 +4,19 @@ import Home from "../screens/home";
 import Guide from "../screens/guide";
 import FaceVerification from "../screens/faceVerification";
 import Confirmation from "../screens/confirmation";
+import Login from "../screens/login";
+import CollaboratorSignUp from "../screens/collaboratorSignUp";
 import { WhiteBalance } from "expo-camera";
 
 const screens = {
+  EmployeeSignUp: {
+    screen: CollaboratorSignUp,
+    navigationOptions: { headerTintColor: "#fff" },
+  },
+  Login: {
+    screen: Login,
+    navigationOptions: { headerTintColor: "#fff" },
+  },
   Home: {
     screen: Home,
     navigationOptions: { headerTintColor: "#fff" },

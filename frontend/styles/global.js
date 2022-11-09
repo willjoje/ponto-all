@@ -63,4 +63,19 @@ export const globalStyles = StyleSheet.create({
     fontSize: 32,
     lineHeight: 32,
   },
+  input: {
+    width: "auto",
+    height: 48,
+    borderWidth: 2,
+    borderRadius: 10,
+    borderColor: "#F06595",
+    paddingLeft: 15,
+  },
+  pinkText: {
+    color: "#F06595",
+    fontFamily: "MontserratSemiBold",
+  },
+  contentPlace: {
+    marginHorizontal: 20,
+  },
 });
