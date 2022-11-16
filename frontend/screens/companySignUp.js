@@ -1,24 +1,36 @@
 import React from "react";
 import { Pressable, Image, Text, View, TextInput } from "react-native";
 import { StyleSheet } from "react-native";
+import { companyPost } from "../services/companyPost";
 import { globalStyles } from "../styles/global";
-import Axios from "axios";
+import api from "../services/api";
 
-export default function Login({ navigation }) {
-  const [nome, onChangeNome] = React.useState("");
-  const [CPF, onChangeCPF] = React.useState(null);
+export default function companySignUp({ navigation }) {
+  const [corporateName, onChangeCorporateName] = React.useState("");
+  const [fantasyName, onChangeFantasyName] = React.useState("");
+  const [cnpj, onChangeCnpj] = React.useState("");
+  const [password, onChangePassword] = React.useState("");
+  const [confirmPassword, onChangeConfirmPassword] = React.useState("");
+  const [phoneNumber, onChangePhoneNumber] = React.useState("");
+  const [email, onChangeEmail] = React.useState("");
 
-  useEffect(() => {
-    Axios.post({{
-  "corporateName": "google",
-  "fantasyName": "google",
-  "cnpj": "108108108108",
-  "password": "1998998",
-  "confirmPassword": "1998998",
-  "phoneNumber": "81998903369",
-  "email": "user@example.com"
-}})
-  });
+  const data = {
+    corporateName,
+    fantasyName,
+    cnpj,
+    password,
+    confirmPassword,
+    phoneNumber,
+    email,
+  };
+
+  function pressHandler() {
+    api.post("/api/Company/RegisterCompany", data).then((response) => {
+      if (response.status == 200) {
+        navigation.navigate("Login");
+      }
+    });
+  }
 
   return (
     <>
@@ -27,96 +39,75 @@ export default function Login({ navigation }) {
           <Text style={styles.title}>PONTO-ALL</Text>
           <View style={styles.pinkRectangle}></View>
           <Text style={{ marginTop: 12, fontFamily: "MontserratSemiBold" }}>
-            Cadastre seu funcionário ;D
-          </Text>
-          <Text style={{ marginTop: 30, fontFamily: "MontserratSemiBold" }}>
-            Nome completo
+            Cadastre sua empresa
           </Text>
 
+          <Text style={{ marginTop: 30, fontFamily: "MontserratSemiBold" }}>
+            Nome da empresa
+          </Text>
           <TextInput
             style={styles.input}
-            onChangeText={onChangeNome}
-            value={nome}
-            keyboardType="numeric"
+            onChangeText={onChangeCorporateName}
+            value={corporateName}
           />
 
-          <View style={styles.password}>
-            <Text style={{ fontFamily: "MontserratSemiBold" }}>CPF</Text>
-            <Text style={{ fontFamily: "MontserratSemiBold" }}>
-              Data de nascimento
-            </Text>
-          </View>
+          <Text style={{ marginTop: 5, fontFamily: "MontserratSemiBold" }}>
+            Nome fantasia
+          </Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeFantasyName}
+            value={fantasyName}
+          />
 
-          <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
-          >
-            <TextInput
-              style={styles.halfInput}
-              onChangeText={onChangeCPF}
-              value={CPF}
-            />
-
-            <TextInput
-              style={styles.halfInput}
-              onChangeText={onChangeCPF}
-              value={CPF}
-            />
-          </View>
+          <Text style={{ marginTop: 5, fontFamily: "MontserratSemiBold" }}>
+            CNPJ
+          </Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeCnpj}
+            value={cnpj}
+            keyboardType="numbers-and-punctuation"
+          />
 
           <Text style={{ marginTop: 5, fontFamily: "MontserratSemiBold" }}>
             E-mail
           </Text>
-
           <TextInput
             style={styles.input}
-            onChangeText={onChangeNome}
-            value={nome}
-            keyboardType="numeric"
+            onChangeText={onChangeEmail}
+            value={email}
           />
 
           <Text style={{ marginTop: 5, fontFamily: "MontserratSemiBold" }}>
             Telefone
           </Text>
-
           <TextInput
             style={styles.input}
-            onChangeText={onChangeNome}
-            value={nome}
-            keyboardType="numeric"
-          />
-
-          <Text style={{ marginTop: 5, fontFamily: "MontserratSemiBold" }}>
-            Endereço
-          </Text>
-
-          <TextInput
-            style={styles.input}
-            onChangeText={onChangeNome}
-            value={nome}
-            keyboardType="numeric"
+            onChangeText={onChangePhoneNumber}
+            value={phoneNumber}
           />
 
           <Text style={{ marginTop: 5, fontFamily: "MontserratSemiBold" }}>
             Senha
           </Text>
-
           <TextInput
             style={styles.input}
-            onChangeText={onChangeNome}
-            value={nome}
-            keyboardType="numeric"
+            onChangeText={onChangePassword}
+            value={password}
           />
+
           <Text style={{ marginTop: 5, fontFamily: "MontserratSemiBold" }}>
             Confirmar senha
           </Text>
 
           <TextInput
             style={styles.input}
-            onChangeText={onChangeNome}
-            value={nome}
-            keyboardType="numeric"
+            onChangeText={onChangeConfirmPassword}
+            value={confirmPassword}
           />
-          <Pressable style={styles.button}>
+
+          <Pressable style={styles.button} onPress={pressHandler}>
             <Text style={globalStyles.buttonText}>Registrar entrada</Text>
           </Pressable>
         </View>

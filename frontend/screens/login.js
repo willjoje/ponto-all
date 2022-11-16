@@ -2,10 +2,34 @@ import React from "react";
 import { Pressable, Image, Text, View, TextInput } from "react-native";
 import { StyleSheet } from "react-native";
 import { globalStyles } from "../styles/global";
+import jwt_decode from "jwt-decode";
+import api from "../services/api";
+import saveKey from "../services/deviceStorage";
 
 export default function Login({ navigation }) {
-  const [text, onChangeText] = React.useState("");
-  const [number, onChangeNumber] = React.useState(null);
+  const [email, onChangeEmail] = React.useState("");
+  const [password, onChangePassword] = React.useState("");
+
+  function pressHandler() {
+    api.post("/api/Auth/Login", { email, password }).then((response) => {
+      if (response.status > 199 && response.status < 300) {
+        const token = response.data;
+        saveKey("id_token", token);
+        next(token);
+      }
+    });
+  }
+
+  const next = (token) => {
+    const decoded = jwt_decode(token);
+    console.log(decoded);
+    if (decoded.role == "Admin") {
+      navigation.navigate("CollaboratorSignUp");
+    } else {
+      navigation.navigate("Home");
+    }
+  };
+
   return (
     <>
       <View style={styles.container}>
@@ -15,34 +39,33 @@ export default function Login({ navigation }) {
           <Text style={{ marginTop: 12, fontFamily: "MontserratSemiBold" }}>
             Faça o login para registrar sua presença. :)
           </Text>
-          <Text style={{ marginTop: 32, fontFamily: "MontserratSemiBold" }}>
-            CPF ou CNPJ
-          </Text>
 
+          <Text style={{ marginTop: 32, fontFamily: "MontserratSemiBold" }}>
+            Email
+          </Text>
           <TextInput
             style={styles.input}
-            onChangeText={onChangeText}
-            value={text}
-            keyboardType="numeric"
+            onChangeText={onChangeEmail}
+            value={email}
           />
 
           <View style={styles.senha}>
             <Text style={{ fontFamily: "MontserratSemiBold" }}>Senha</Text>
             <Text style={globalStyles.pinkText}>Esqueci minha senha</Text>
           </View>
-
           <TextInput
             style={styles.input}
-            onChangeText={onChangeNumber}
-            value={number}
+            onChangeText={onChangePassword}
+            value={password}
+            secureTextEntry={true}
           />
 
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button} onPress={pressHandler}>
             <Text style={globalStyles.buttonText}>Registrar entrada</Text>
           </Pressable>
           <Text style={{ marginTop: 32, fontFamily: "MontserratSemiBold" }}>
             Não tem uma conta?
-            <Text style={globalStyles.pinkText}> Cadastre seu funcionário</Text>
+            <Text style={globalStyles.pinkText}> Cadastre sua empresa</Text>
           </Text>
         </View>
       </View>

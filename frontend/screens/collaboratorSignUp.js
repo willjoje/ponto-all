@@ -1,11 +1,63 @@
 import React, { useEffect } from "react";
-import { Pressable, Image, Text, View, TextInput } from "react-native";
+import {
+  Pressable,
+  Image,
+  Text,
+  View,
+  TextInput,
+  AsyncStorage,
+} from "react-native";
 import { StyleSheet } from "react-native";
 import { globalStyles } from "../styles/global";
+import api from "../services/api";
 
 export default function Login({ navigation }) {
-  const [nome, onChangeNome] = React.useState("");
-  const [CPF, onChangeCPF] = React.useState(null);
+  const [name, onChangeName] = React.useState("");
+  const [email, onChangeEmail] = React.useState("");
+  const [cpf, onChangeCPF] = React.useState("");
+  const [phoneNumber, onChangePhoneNumber] = React.useState("");
+  const [birthDate, onChangeBirthDate] = React.useState("");
+  const [endereco, onChangeEndereco] = React.useState(""); //fake
+  const isManager = true;
+
+  const address = {
+    country: "string",
+    state: "string",
+    cep: "55555000",
+    city: "string",
+    street: "string",
+    district: "string",
+    number: "string",
+    reference: "string",
+  };
+
+  const data = {
+    name,
+    email,
+    cpf,
+    phoneNumber,
+    birthDate,
+    isManager,
+    address,
+  };
+
+  async function pressHandler() {
+    let newData = data;
+    newData.birthDate = new Date(newData.birthDate);
+    console.log(newData);
+
+    const value = await AsyncStorage.getItem("id_token");
+    api
+      .post("/api/User/RegisterCollaborator", newData, {
+        headers: { Authorization: `Bearer ${value}` },
+      })
+      .then((response) => {
+        if (response.status > 199 && response.status < 300) {
+          console.log("Usuário cadastrado com sucesso");
+          navigation.navigate("Login");
+        }
+      });
+  }
 
   return (
     <>
@@ -16,15 +68,14 @@ export default function Login({ navigation }) {
           <Text style={{ marginTop: 12, fontFamily: "MontserratSemiBold" }}>
             Cadastre seu funcionário ;D
           </Text>
+
           <Text style={{ marginTop: 30, fontFamily: "MontserratSemiBold" }}>
             Nome completo
           </Text>
-
           <TextInput
             style={styles.input}
-            onChangeText={onChangeNome}
-            value={nome}
-            keyboardType="numeric"
+            onChangeText={onChangeName}
+            value={name}
           />
 
           <View style={styles.password}>
@@ -33,77 +84,50 @@ export default function Login({ navigation }) {
               Data de nascimento
             </Text>
           </View>
-
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
             <TextInput
               style={styles.halfInput}
               onChangeText={onChangeCPF}
-              value={CPF}
+              value={cpf}
             />
 
             <TextInput
               style={styles.halfInput}
-              onChangeText={onChangeCPF}
-              value={CPF}
+              onChangeText={onChangeBirthDate}
+              value={birthDate}
             />
           </View>
 
           <Text style={{ marginTop: 5, fontFamily: "MontserratSemiBold" }}>
             E-mail
           </Text>
-
           <TextInput
             style={styles.input}
-            onChangeText={onChangeNome}
-            value={nome}
-            keyboardType="numeric"
+            onChangeText={onChangeEmail}
+            value={email}
           />
 
           <Text style={{ marginTop: 5, fontFamily: "MontserratSemiBold" }}>
             Telefone
           </Text>
-
           <TextInput
             style={styles.input}
-            onChangeText={onChangeNome}
-            value={nome}
-            keyboardType="numeric"
+            onChangeText={onChangePhoneNumber}
+            value={phoneNumber}
           />
 
           <Text style={{ marginTop: 5, fontFamily: "MontserratSemiBold" }}>
             Endereço
           </Text>
-
           <TextInput
             style={styles.input}
-            onChangeText={onChangeNome}
-            value={nome}
-            keyboardType="numeric"
+            onChangeText={onChangeEndereco}
+            value={endereco}
           />
 
-          <Text style={{ marginTop: 5, fontFamily: "MontserratSemiBold" }}>
-            Senha
-          </Text>
-
-          <TextInput
-            style={styles.input}
-            onChangeText={onChangeNome}
-            value={nome}
-            keyboardType="numeric"
-          />
-          <Text style={{ marginTop: 5, fontFamily: "MontserratSemiBold" }}>
-            Confirmar senha
-          </Text>
-
-          <TextInput
-            style={styles.input}
-            onChangeText={onChangeNome}
-            value={nome}
-            keyboardType="numeric"
-          />
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button} onPress={pressHandler}>
             <Text style={globalStyles.buttonText}>Registrar entrada</Text>
           </Pressable>
         </View>
