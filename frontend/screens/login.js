@@ -15,6 +15,7 @@ export default function Login({ navigation }) {
       if (response.status > 199 && response.status < 300) {
         const token = response.data;
         saveKey("id_token", token);
+        alert("Bem vindo");
         next(token);
       }
     });
@@ -28,6 +29,10 @@ export default function Login({ navigation }) {
     } else {
       navigation.navigate("Home");
     }
+  };
+
+  const signCompany = () => {
+    navigation.navigate("CompanySignUp");
   };
 
   return (
@@ -65,7 +70,10 @@ export default function Login({ navigation }) {
           </Pressable>
           <Text style={{ marginTop: 32, fontFamily: "MontserratSemiBold" }}>
             Não tem uma conta?
-            <Text style={globalStyles.pinkText}> Cadastre sua empresa</Text>
+            <Text style={globalStyles.pinkText} onPress={signCompany}>
+              {" "}
+              Cadastre sua empresa
+            </Text>
           </Text>
         </View>
       </View>

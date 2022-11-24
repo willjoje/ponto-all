@@ -1,7 +1,6 @@
 import React from "react";
 import { Pressable, Image, Text, View, TextInput } from "react-native";
 import { StyleSheet } from "react-native";
-import { companyPost } from "../services/companyPost";
 import { globalStyles } from "../styles/global";
 import api from "../services/api";
 
@@ -25,6 +24,7 @@ export default function companySignUp({ navigation }) {
   };
 
   function pressHandler() {
+    console.log(data);
     api.post("/api/Company/RegisterCompany", data).then((response) => {
       if (response.status == 200) {
         navigation.navigate("Login");

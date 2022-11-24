@@ -7,10 +7,10 @@ import v from "../assets/v.png";
 
 export default function Confirmation({ navigation }) {
   const pressHandler = () => {
-    navigation.navigate("Home");
+    navigation.navigate("History");
   };
   const pressHandlerBack = () => {
-    navigation.navigate("FaceVerification");
+    navigation.navigate("Guide");
   };
   return (
     <>
@@ -27,12 +27,12 @@ export default function Confirmation({ navigation }) {
         <View style={globalStyles.buttonGroup}>
           <Pressable style={globalStyles.button}>
             <Text style={globalStyles.buttonText} onPress={pressHandler}>
-              Finalizar registro de presença
+              Historico de ponto
             </Text>
           </Pressable>
 
           <Pressable onPress={pressHandlerBack}>
-            <Text style={globalStyles.boldText}> Voltar </Text>
+            <Text style={globalStyles.boldText}> Registro de ponto </Text>
           </Pressable>
         </View>
       </View>

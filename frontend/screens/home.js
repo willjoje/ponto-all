@@ -12,11 +12,17 @@ export default function Home({ navigation }) {
   const pressHandler = () => {
     navigation.navigate("Guide");
   };
+
+  const goToHistory = () => {
+    navigation.navigate("History");
+  };
+
   const [currentDate, setCurrentDate] = useState("");
   useEffect(() => {
     moment.locale("pt-br");
     setInterval(() => setCurrentDate(moment().format("LT")), 200);
   }, []);
+
   return (
     <>
       <View style={styles.container}>
@@ -34,7 +40,7 @@ export default function Home({ navigation }) {
         <Pressable style={globalStyles.button} onPress={pressHandler}>
           <Text style={globalStyles.buttonText}>Registrar entrada</Text>
         </Pressable>
-        <Pressable style={globalStyles.pressable}>
+        <Pressable style={globalStyles.pressable} onPress={goToHistory}>
           <Text style={globalStyles.boldText}>Ver histórico</Text>
         </Pressable>
       </View>

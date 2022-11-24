@@ -53,7 +53,7 @@ export default function Login({ navigation }) {
       })
       .then((response) => {
         if (response.status > 199 && response.status < 300) {
-          console.log("Usuário cadastrado com sucesso");
+          alert("Usuário cadastrado com sucesso");
           navigation.navigate("Login");
         }
       });
